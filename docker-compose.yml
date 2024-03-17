@@ -1,5 +1,6 @@
 version: '2'
-services:   
+services:
+
   mysqldb:
     container_name: flask-mysql
     restart: always
@@ -11,6 +12,10 @@ services:
       MYSQL_ROOT_PASSWORD: 'password*R00t'
     ports:
       - '3306:3306'
+    healthcheck:
+      test: ["CMD", "mysqladmin","ping","-h","localhost"]
+      timeout: 20s
+      retries: 10
 
   pythonapp:
     container_name: flask-app
@@ -21,4 +26,5 @@ services:
     ports:
       - '5000:5000'
     depends_on:
-      - mysqldb
+      mysqldb:
+        condition: service_healthy
