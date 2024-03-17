@@ -1,0 +1,81 @@
+{% extends 'base.html' %} {% block title%}Create Object{% endblock %} {% block
+  content %}
+  <div class="container">
+    <h1>Update Object</h1>
+    <form method="post">
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="iphone 14 Pro Max"
+          name="name"
+          value="{{inventory.name}}"
+        />
+        <label for="floatingInput">Name</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="number"
+          class="form-control"
+          id="floatingInput"
+          placeholder="599"
+          name="price"
+          min="0"
+          step="0.01"
+          value="{{inventory.price}}"
+        />
+        <label for="floatingInput">Price</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="485754431A7CCDEF"
+          name="serial_number"
+          value="{{inventory.serial_number}}"
+        />
+        <label for="floatingInput">Serial Number</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="F435F237456F"
+          name="mac_address"
+          value="{{inventory.mac_address}}"
+        />
+        <label for="floatingInput">Mac Address</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingPassword"
+          placeholder="Apple Computers INC"
+          name="manufacturer"
+          value="{{inventory.manufacturer}}"
+        />
+        <label for="floatingPassword">Manufacturer</label>
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label"
+          >Description</label
+        >
+        <textarea
+          class="form-control"
+          id="exampleFormControlTextarea1"
+          rows="3"
+          name="description"
+        >{{inventory.description}}</textarea>
+      </div>
+      <div>
+        <button class="btn btn-success">Submit</button>
+        <a href="{{url_for("home")}}" class="btn btn-danger">Cancel</a>
+      </div>
+    </form>
+  </div>
+  {% endblock %}
+  

@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% block title%}MAIN{% endblock %} {% block content %}
+<div class="container">
+  <h1>Inventory List</h1>
+  <a class="btn btn-success" href="{{url_for('add_object')}}">Create Object</a>
+  {% if inventory %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">MAC Address</th>
+        <th scope="col">Serial Number</th>
+        <th scope="col">Manufacturer</th>
+        <th scope="col">Description</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+            {% for object in inventory %}
+            <tr>
+                <th scope="row">{{object.id}}</th>
+                <td>{{object.name}}</td>
+                <td>{{object.price}}</td>
+                <td>{{object.mac_address}}</td>
+                <td>{{object.serial_number}}</td>
+                <td>{{object.manufacturer}}</td>
+                <td>{{object.description}}</td>
+                <td>
+                    <a class="btn btn-warning" href="{{url_for('delete_object',id=object.id)}}">Delete</a>
+                    <a class="btn btn-primary" href="{{url_for('update_object',id=object.id)}}">Update</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</tbody>
+{% else %}
+    <h2>There's no objects in inventory, please add some</h2>
+{% endif %}
+    {% endblock %}

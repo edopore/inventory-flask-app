@@ -1,4 +1,6 @@
-FROM python:bookworm
+FROM python:3.11
+
+EXPOSE 5000
 
 WORKDIR /app
 
@@ -6,5 +8,5 @@ COPY . /app
 
 RUN pip3 install -r requirements.txt
 
-CMD ["python3","api.py"]
 
+CMD [ "python3", "app.py" ]

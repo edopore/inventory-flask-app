@@ -1,0 +1,24 @@
+version: '2'
+services:   
+  mysqldb:
+    container_name: flask-mysql
+    restart: always
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: 'Inventory'
+      MYSQL_USER: 'userInventory'
+      MYSQL_PASSWORD: 'Inventory'
+      MYSQL_ROOT_PASSWORD: 'password*R00t'
+    ports:
+      - '3306:3306'
+
+  pythonapp:
+    container_name: flask-app
+    restart: always
+    build: .
+    links:
+      - mysqldb
+    ports:
+      - '5000:5000'
+    depends_on:
+      - mysqldb
